@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'My Application',
+    'name' => env('APP_NAME', 'My Application'),
 
     /*
     |--------------------------------------------------------------------------
@@ -235,6 +235,7 @@ return [
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
         'Socialite'    => Laravel\Socialite\Facades\Socialite::class,
+        'Passport'    => Laravel\Passport\Passport::class,
         'Authv'        => App\Facades\Authv::class,
 
     ],
