@@ -34,6 +34,7 @@ class SocialiteController extends Controller
               'name' => $providerName
           ]);
       }
+
       $puser = Socialite::driver($providerName)->user();
       $ouser = $provider->users()->where('id', $puser->getId())->first();
       if ($ouser == null) {
@@ -70,6 +71,9 @@ class SocialiteController extends Controller
 
     public function redirectAfterLogin()
     {
+
+
+
         return redirect('/');
     }
 
