@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Provider extends Model
 {
+    protected $fillable = ['name'];
+
     /**
      * The table associated with the model.
      *

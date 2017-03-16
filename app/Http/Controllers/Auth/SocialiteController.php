@@ -29,6 +29,11 @@ class SocialiteController extends Controller
   public function handleCallback(Request $request, $providerName)
   {
       $provider = OAuth\Provider::where('name', $providerName)->first();
+      if(!$provider){
+          $provider =   OAuth\Provider::firstOrCreate([
+              'name' => $providerName
+          ]);
+      }
       $puser = Socialite::driver($providerName)->user();
       $ouser = $provider->users()->where('id', $puser->getId())->first();
       if ($ouser == null) {
