@@ -1,16 +1,23 @@
 @extends('layouts.minimal')
 
 @section('content')
-<h4 class="h-m-top--sm">Sign in to continue</h4>
-<div class="mdl-grid">
-  <div class="mdl-layout-spacer"></div>
-  <div class="idp-list-small">
-    @include('auth.social')
-  </div>
-  <div class="mdl-layout-spacer"></div>
-</div>
-<div class="mdl-grid">
-  <div class="mdl-layout-spacer"></div>
+<link rel="stylesheet" type="text/css" href="/css/mw.new.css">
+
+
+
+     <h2>Log In</h2>
+
+
+     <div class="sign-in-top">
+         New to Microweber?        <a href="{{ url('/register') }}" class="cbtn cbtn-alt ">Sign Up </a>
+     </div>
+
+
+     <br><br>
+    <div class="sign-grid-holder">
+    <div class="sign-grid">
+    <div class="sign-grid-col">
+
   <form class="form-vertical" role="form" method="POST" action="{{ url('/login') }}">
     {{ csrf_field() }}
     <div class="login-card mdl-card mdl-shadow--2dp">
@@ -32,27 +39,45 @@
           @endif
         </div>
 
-        <div class="mdl-field">
+        <?php /*<div class="mdl-field">
           <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="remember">
             <input id="remember" type="checkbox" name="remember" class="mdl-switch__input" checked>
             <span class="mdl-switch__label">Remember Me</span>
           </label>
-        </div>
+        </div>*/ ?>
+
+        <label class="check pull-left" style="display: inline-block">
+            <input id="remember" type="checkbox" name="remember" class="mdl-switch__input" checked>
+            <i></i>
+             <span class="check-label">Remember Me</span>
+        </label>
+
+        <a href="{{ url('/password/reset') }}" class="xlink pull-right">
+          Forgot Password?
+        </a>
 
       </div>
-      <div class="mdl-card__actions mdl-card--border">
-        <button type="submit" class="mdl-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+      <div class="mdl-card__actions" style="text-align: left">
+        <?php /*<button type="submit" class="mdl-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          {{ trans('button.login') }}
+        </button>*/ ?>
+        <button type="submit" class="cbtn cbtn-submit">
           {{ trans('button.login') }}
         </button>
-        <a href="{{ url('/password/reset') }}" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-          Forgot Your Password?
-        </a>
+
       </div>
     </div>
   </form>
-  <div class="mdl-layout-spacer"></div>
+ </div>
+ <div class="sign-grid-col">
+<div class="idp-list-small">
+    @include('auth.social')
 </div>
-<a href="{{ url('/register') }}" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-  New user? <span class="mdl-button--accent">Create account</a>
-  </a>
+</div>
+</div>
+</div>
+
+<?php /*<a href="{{ url('/register') }}" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+  New user? <span class="mdl-button--accent">Create account</span>
+  </a>*/ ?>
   @endsection

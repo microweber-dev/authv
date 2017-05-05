@@ -13,7 +13,20 @@
                     </div>
                 <div class="panel-body">
                     You are logged in!
+
+
+                    <a href="" onclick="event.preventDefault(); document.getElementById('logout-form-main').submit();">
+                        Logout
+                    </a>
+                    <form id="logout-form-main" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+
+
+
                 </div>
+
+
             </div>
         </div>
     </div>

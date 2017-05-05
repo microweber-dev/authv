@@ -11,8 +11,11 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function (Request $request) {
+
+
     if (Auth::check()) {
+
         return redirect('/home');
     } else {
         return redirect('/login');
