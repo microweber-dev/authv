@@ -43,8 +43,19 @@ class SocialiteController extends Controller
             $ouser = $this->create($provider->id, $puser);
         }
         $existingUser = true;
+
         if ($ouser->user_id) {
-            Auth::loginUsingId($ouser->user_id, true);
+
+            $user = App\User::where('id', $ouser->user_id)->first();
+            Auth::login($user, true);
+//dd($user);
+          //  dd($ouser);
+
+           // Auth::loginUsingId($ouser->user_id, true);
+           //  Auth::login($user, true);
+        //    Auth::guard('web')->login($user);
+         //   Auth::login($user, true);
+
         } else {
             if ($ouser->email) {
                 $user = App\User::where('email', $ouser->email)->first();

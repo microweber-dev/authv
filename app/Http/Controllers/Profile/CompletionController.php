@@ -15,9 +15,9 @@ class CompletionController extends Controller
     protected function rules($haveEmail, $havePassword)
     {
         $list = [
-                'name'     => 'max:255',
-                'username' => 'required|min:3|max:255|unique:users',
-              ];
+             'name' => 'max:255',
+          'username' => 'required|min:3|max:255|unique:users',
+        ];
         if ($haveEmail) {
             $list['email'] = 'required|email|max:255';
         }
@@ -50,15 +50,19 @@ class CompletionController extends Controller
     protected function create(array $data)
     {
         $user = false;
-        if(isset($data['email'])){
-            $user = User::firstOrCreate(['email'=>$data['email']]);
+        if (isset($data['email'])) {
+            $user = User::firstOrCreate(['email' => $data['email']]);
         }
-        if(!$user){
-        $user = User::create([
-            'name'     => $data['name'],
-            'username' => $data['username'],
-            'email'    => $data['email'],
-        ]);
+        if (!$user) {
+            if (!isset($data['username'])) {
+                $data['username'] = '';
+            }
+
+            $user = User::create([
+                'name' => $data['name'],
+                'username' => $data['username'],
+                'email' => $data['email'],
+            ]);
         }
         $this->sendEmailConfirmation($user);
 

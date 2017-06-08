@@ -1,5 +1,5 @@
 <?php
-
+use Carbon\Carbon;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,11 +26,23 @@ Auth::routes();
 
 Authv::routes();
 Passport::routes();
+Passport::tokensExpireIn(Carbon::now()->addDays(15));
+ Passport::enableImplicitGrant();
+
 
 Route::get('/home', 'HomeController@index');
 
 Route::get('/me', function () {
     //
+
+    $user = App\User::find(\Auth::user());
+    return $user;
+
+
+    return \Auth::guard('api')->user() ;
+    return \Auth::guard('api')->user();;
+
+
     $user = App\User::find(\Auth::user());
     return $user;
 })->middleware('auth:api');
@@ -56,11 +68,25 @@ Route::get('/api/user', function (Request $request) {
 });
 
 
-
 //Route::get('/api/user', function (Request $request) {
 //    return $request->user();
 //})->middleware('auasdth:api');
 
+
+Route::get('logout', function (\Request $request) {
+    if (\Auth::check()) {
+        \Auth::logout();
+    }
+
+
+    if (\Request::ajax()) {
+        return true;
+    }
+
+
+    return redirect('/home');
+
+});
 
 Route::get('sssapi/user', function (\Request $request) {
 
