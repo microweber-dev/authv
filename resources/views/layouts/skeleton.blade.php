@@ -24,5 +24,6 @@
   @yield('body')
   <snackbar v-ref:abc></snackbar>
   <script src="/js/app.js"></script>
+  <script src="/js/login.js"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@
 require('./material');
 
 require('./authv');
+
 window.axios = require('axios');
 
 window.axios.defaults.headers.common = {
@@ -21,6 +22,9 @@ window.axios.defaults.headers.common = {
  */
 
 Vue.component('example', require('./components/Example.vue'));
+
+
+
 
 const app = new Vue({
     el: '#app'
@@ -41,3 +45,7 @@ Vue.component(
     'passport-personal-access-tokens',
     require('./components/passport/PersonalAccessTokens.vue')
 );
+
+
+
+require('./login');

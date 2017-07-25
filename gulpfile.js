@@ -1,5 +1,6 @@
 const elixir = require('laravel-elixir');
 
+require('jquery');
 require('laravel-elixir-vue-2');
 
 /*
@@ -14,6 +15,9 @@ require('laravel-elixir-vue-2');
  */
 
 elixir(mix => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+
+
+
+
+mix.sass('app.scss').webpack('login.js').webpack('app.js');
 });

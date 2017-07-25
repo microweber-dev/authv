@@ -23,9 +23,11 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
 
             //
+
            return redirect('/home');
         }
-
+       // tyka pecata dd($request);
+       // dd($next);
         return $next($request);
     }
 }

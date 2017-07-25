@@ -19,9 +19,11 @@ trait Completes
    */
   public function showForm(Request $request)
   {
+
       if ($request->session()->has('oauth_user_id') && Auth::guest()) {
           $id = $request->session()->get('oauth_user_id');
           $user = OAuth\User::where('id', $id)->whereNull('email')->first();
+
           if ($user) {
               return view('profile.complete', ['name' => $user->name, 'username' => $user->nickname, 'askEmail' => true, 'askPassword' => false]);
           }
@@ -65,6 +67,17 @@ trait Completes
           }
           $user->save();
       }
+
+      $sess = $request->session()->all();
+      if (isset($sess['_token'])) {
+          if (isset($sess['url']) and isset($sess['url']['intended'])) {
+              return redirect($sess['url']['intended']);
+
+          }
+      }
+
+
+
 
       return redirect('/home');
   }

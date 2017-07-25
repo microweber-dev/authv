@@ -15,11 +15,11 @@ class CompletionController extends Controller
     protected function rules($haveEmail, $havePassword)
     {
         $list = [
-             'name' => 'max:255',
-          'username' => 'required|min:3|max:255|unique:users',
+            'name' => 'max:255',
+            'username' => 'required|min:3|max:255|unique:users',
         ];
         if ($haveEmail) {
-            $list['email'] = 'required|email|max:255';
+            $list['email'] = 'required|email|unique:users|max:255';
         }
         if ($havePassword) {
             $list['password'] = 'required|min:6';

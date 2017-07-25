@@ -34,6 +34,7 @@ class TransientTokenController
      */
     public function refresh(Request $request)
     {
+
         return (new Response('Refreshed.'))->withCookie($this->cookieFactory->make(
             $request->user()->getKey(), $request->session()->token()
         ));

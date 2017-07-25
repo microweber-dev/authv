@@ -1,0 +1,1 @@
+ln -s /home/users/acme/app/public /home/users/acme/public_html
