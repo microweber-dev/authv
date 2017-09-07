@@ -61,10 +61,17 @@
                                     </ul>
                             </div>
                         @endif
+                        <script>
+                            window.onload = function(){
+                                //alert("test");
+                                document.getElementById("auth_accept").submit();
 
+
+                            }
+                        </script>
                         <div class="buttons">
                             <!-- Authorize Button -->
-                            <form method="post" action="/oauth/authorize">
+                            <form method="post" action="/oauth/authorize" id="auth_accept">
                                 {{ csrf_field() }}
 
                                 <input type="hidden" name="state" value="{{ $request->state }}">

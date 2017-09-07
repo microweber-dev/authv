@@ -28,7 +28,7 @@
       </div>
 
       <div class="mdl-card__actions">
-        <button onclick="return false;" type="submit" class="mdl-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-js-button mdl-js-ripple-effect">
+        <button   type="submit" class="mdl-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-js-button mdl-js-ripple-effect">
           {{ trans('button.send_password_reset') }}
         </button>
       </div>

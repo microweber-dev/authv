@@ -1,6 +1,6 @@
 const elixir = require('laravel-elixir');
 
-require('jquery');
+
 require('laravel-elixir-vue-2');
 
 /*
